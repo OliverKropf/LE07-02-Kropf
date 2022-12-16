@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 
@@ -14,7 +12,6 @@ namespace LE07_02_Kropf
     {
         public WindowGoodbye()
         {
-            
             InitializeComponent();
             ClosingProcess();
         }
