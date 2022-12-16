@@ -1,0 +1,363 @@
+﻿<Window x:Class="LE07_02_Kropf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Multible Choice Quiz" 
+        Height="750" Width="550"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="WindowMouseDown"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        >
+
+    <Border CornerRadius="25">
+        <Grid>
+
+            <Grid.Background >
+                <ImageBrush ImageSource="Pictures/planets.jpg"
+                            Stretch="UniformToFill"
+                            />
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!--Reload/Rewind Button with Image-->            
+            
+            <Button x:Name="reload"
+                    Margin="0,128,240,0"
+                    VerticalAlignment="Top"
+                    BorderThickness="0"
+                    FontSize="16"
+                    FontFamily="Montserrat"
+                    Cursor="Hand"
+                    Click="ReloadClick"
+                    HorizontalAlignment="Right" 
+                    Width="70" Height="70" 
+                    Grid.ColumnSpan="2" 
+                    Grid.RowSpan="2" 
+                    Grid.Row="2"
+                    Background="Transparent"
+                    Foreground="Transparent"
+                    >
+
+                <Image x:Name="rewind" Source="Pictures/rewind.png" 
+                       >
+                    
+                    <Image.Style>
+                        <Style >
+                            <Style.Triggers 
+                                            >
+
+
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </Button>
+
+            <!--Minimize Button-->            
+            
+            <Button x:Name="btnMinmize"
+                    Margin="0,10,45,0"
+                    VerticalAlignment="Top"
+                    BorderThickness="0"
+                    Content="-"
+                    Foreground="White"
+                    FontSize="16"
+                    FontFamily="Montserrat"
+                    Cursor="Hand"
+                    Grid.Column="1"
+                    Click="BtnMinimizeClick"
+                    HorizontalAlignment="Right"
+                    >
+
+                <Button.Style>
+                    <Style TargetType="Button"
+                           >
+                        
+                        <Setter Property="Background" 
+                                Value="Goldenrod"
+                                />
+                        
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" 
+                                     Value="True"
+                                     >
+                                
+                                <Setter Property="Background" 
+                                        Value="DarkGoldenrod"
+                                        />
+                                
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button"
+                                     >
+                        
+                        <Border Width="18" 
+                                Height="18"
+                                CornerRadius="9"
+                                Background="{TemplateBinding Background}"
+                                >
+
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              />
+                            
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            
+            <!--Close Button-->            
+            
+            <Button x:Name="btnClose"
+                    Margin="0,10,10,0"
+                    BorderThickness="0"
+                    Content="x"
+                    Foreground="White"
+                    FontSize="16"
+                    FontFamily="Montserrat"
+                    Cursor="Hand"                    
+                    Click="BtnCloseClick"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top" 
+                    Grid.Column="1"                    
+                    >
+                
+                <Button.Style>
+                    <Style TargetType="Button"
+                           >
+                        
+                        <Setter Property="Background" 
+                                Value="DarkRed"
+                                />
+                        
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" 
+                                     Value="True">
+                                <Setter Property="Background" 
+                                        Value="Firebrick"
+                                        />
+                                
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button"
+                                     >
+                        
+                        <Border Width="18" 
+                                Height="18"
+                                CornerRadius="9"
+                                Background="{TemplateBinding Background}"
+                                >
+                            
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              />
+                            
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!--Frage 1 mit Image für Ergebnis-->
+
+            <Label HorizontalAlignment="Left" 
+                   Margin="0,15,0,135" 
+                   Content="Welches Tier fährt über die Straße?" 
+                   Foreground="White"
+                   />
+
+            <Image x:Name="image1"
+                   HorizontalAlignment="Left" 
+                   Margin="137,58,0,59" 
+                   Width="70" 
+                   Height="70" 
+                   Grid.Column="1" 
+                   Source="Pictures/space.png"
+                   />
+
+            <RadioButton x:Name="radioBtn1"
+                     Content="Löwe" 
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Top" 
+                     Margin="31,62,0,0" 
+                     Width="80"
+                     Foreground="White"
+                     Checked="RadioBtnCheckedChangeImageToThumbsDown"
+                     />
+
+            <RadioButton x:Name="radioBtn2"
+                     Content="Tiger" 
+                     Margin="31,82,164,83"
+                     Foreground="White"
+                     Checked="RadioBtnCheckedChangeImageToThumbsDown"
+                     />
+
+            <RadioButton x:Name="radioBtn3"
+                     Content="Jaguar" 
+                     Margin="31,101,154,61"
+                     Foreground="White" 
+                     Checked="RadioBtnCheckedChangeImageToThumbsUp"
+                     />
+
+            <!--Frage 2 mit Image für Ergebnis-->
+
+            <Label HorizontalAlignment="Left" 
+                   Margin="0,15,0,117" 
+                   Content="Was ist aller Laster Anfang?" 
+                   Foreground="White"
+                   Grid.Row="1"
+                   />
+
+            <Image x:Name="image2"
+                   HorizontalAlignment="Left" 
+                   Margin="137,58,0,59" 
+                   Width="70" 
+                   Height="70" 
+                   Grid.Column="1" 
+                   Grid.Row="1" 
+                   Source="Pictures/space.png"
+                   />
+
+            <RadioButton x:Name="radioBtn4"
+                     Content="Sucht" 
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Top" 
+                     Margin="31,62,0,0" 
+                     Width="80"
+                     Foreground="White"
+                     Grid.Row="1"
+                     Checked="RadioBtnCheckedChangeImageToThumbsDown"
+                     />
+
+            <RadioButton x:Name="radioBtn5"
+                     Content="Trauma" 
+                     Margin="31,82,164,83"
+                     Foreground="White"
+                     Grid.Row="1"
+                     Checked="RadioBtnCheckedChangeImageToThumbsDown"
+                     />
+
+            <RadioButton x:Name="radioBtn6"
+                     Content="Stoßstange" 
+                     Margin="31,101,160,61"
+                     Foreground="White" 
+                     Grid.Row="1"
+                     Checked="RadioBtnCheckedChangeImageToThumbsUp"
+                     />
+
+            <!--Frage 3 mit Image für Ergebnis-->
+
+            <Label HorizontalAlignment="Left" 
+                   Margin="0,15,0,117" 
+                   Content="Welche Angst hat jeder Luftballon?" 
+                   Foreground="White"
+                   Grid.Row="2"
+                   />
+
+            <Image x:Name="image3"
+                   HorizontalAlignment="Left" 
+                   Margin="137,58,0,59" 
+                   Width="70" 
+                   Height="70" 
+                   Grid.Column="1" 
+                   Grid.Row="2" 
+                   Source="Pictures/space.png"
+                   />
+
+            <RadioButton x:Name="radioBtn7"
+                     Content="Höhenangst" 
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Top" 
+                     Margin="31,62,0,0" 
+                     Width="90"
+                     Foreground="White"
+                     Grid.Row="2"
+                     Checked="RadioBtnCheckedChangeImageToThumbsDown"
+                     />
+
+            <RadioButton x:Name="radioBtn8"
+                     Content="Platzangst" 
+                     Margin="31,82,164,83"
+                     Foreground="White"
+                     Grid.Row="2"
+                     Checked="RadioBtnCheckedChangeImageToThumbsUp"
+                     />
+
+            <RadioButton x:Name="radioBtn9"
+                     Content="Kakteen" 
+                     Margin="31,101,160,61"
+                     Foreground="White" 
+                     Grid.Row="2"
+                     Checked="RadioBtnCheckedChangeImageToThumbsDown"
+                     />
+
+            <!--Frage 4 mit Image für Ergebnis-->
+
+            <Label HorizontalAlignment="Left" 
+                   Margin="0,15,0,117" 
+                   Content="Wer knurrt, wird aber niemals beißen?" 
+                   Foreground="White"
+                   Grid.Row="3"
+                   />
+
+            <Image x:Name="image4"
+                   HorizontalAlignment="Left" 
+                   Margin="137,58,0,59" 
+                   Width="70" 
+                   Height="70" 
+                   Grid.Column="1" 
+                   Grid.Row="3" 
+                   Source="Pictures/space.png"
+                   />
+
+            <RadioButton x:Name="radioBtn10"
+                     Content="Der Magen" 
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Top" 
+                     Margin="31,62,0,0" 
+                     Width="80"
+                     Foreground="White"
+                     Grid.Row="3"
+                     Checked="RadioBtnCheckedChangeImageToThumbsUp"
+                     />
+
+            <RadioButton x:Name="radioBtn11"
+                     Content="Ein Hund" 
+                     Margin="31,82,164,83"
+                     Foreground="White"
+                     Grid.Row="3"
+                     Checked="RadioBtnCheckedChangeImageToThumbsDown"
+                     />
+
+            <RadioButton x:Name="radioBtn12"
+                     Content="Die Ehefrau" 
+                     Margin="31,101,160,61"
+                     Foreground="White" 
+                     Grid.Row="3"
+                     Checked="RadioBtnCheckedChangeImageToThumbsUp"
+                     />
+            
+        </Grid>
+    </Border>
+</Window>
