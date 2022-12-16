@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
@@ -13,8 +14,9 @@ namespace LE07_02_Kropf
     {
         public WindowGoodbye()
         {
+            Application.Current.MainWindow.Close();
             InitializeComponent();
-            Timer();
+            ClosingProcess();
         }
         private void WindowMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -23,16 +25,9 @@ namespace LE07_02_Kropf
                 DragMove();
             }
         }
-        private void Timer()
+        private async void ClosingProcess()
         {
-            System.Timers.Timer timer = new System.Timers.Timer();
-
-            timer.Interval = 10000;
-            timer.Elapsed += TimerElapsed;
-            timer.Start();
-        }
-        private void TimerElapsed(object sender, ElapsedEventArgs e)
-        {
+            await Task.Delay(1000);
             Environment.Exit(0);
         }
     }
