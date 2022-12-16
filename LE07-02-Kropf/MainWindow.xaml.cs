@@ -30,7 +30,8 @@ namespace LE07_02_Kropf
         private void BtnCloseClick(object sender, RoutedEventArgs e)
         {
             WindowGoodbye windowGoodbye = new WindowGoodbye();
-            windowGoodbye.ShowDialog();
+            windowGoodbye.Show();
+            Close();
         }
         private void RadioBtnCheckedChangeImageToThumbsUp(object sender, RoutedEventArgs e)
         {

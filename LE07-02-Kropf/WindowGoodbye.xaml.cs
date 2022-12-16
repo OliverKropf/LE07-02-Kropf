@@ -14,7 +14,7 @@ namespace LE07_02_Kropf
     {
         public WindowGoodbye()
         {
-            Application.Current.MainWindow.Close();
+            
             InitializeComponent();
             ClosingProcess();
         }
@@ -27,7 +27,7 @@ namespace LE07_02_Kropf
         }
         private async void ClosingProcess()
         {
-            await Task.Delay(1000);
+            await Task.Delay(10000);
             Environment.Exit(0);
         }
     }
