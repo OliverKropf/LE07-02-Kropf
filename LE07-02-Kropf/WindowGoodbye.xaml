@@ -14,6 +14,6 @@
         >
     
     <Grid>
-        <Label Content="Danke fürs Mitmachen! Goodbye!"/>
+        <Label x:Name="label1" Content="Danke fürs Mitmachen! Goodbye!"/>
     </Grid>
 </Window>

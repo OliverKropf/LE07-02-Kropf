@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading;
+using System.Windows;
 using System.Windows.Input;
 
 namespace LE07_02_Kropf
@@ -11,6 +12,7 @@ namespace LE07_02_Kropf
         public WindowGoodbye()
         {
             InitializeComponent();
+        
         }
         private void WindowMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -18,6 +20,11 @@ namespace LE07_02_Kropf
             {
                 DragMove();
             }
+        }
+        private void SleepAndClose()
+        {
+            Thread.Sleep(10000);
+            Close();
         }
     }
 }
