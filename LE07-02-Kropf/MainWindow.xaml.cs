@@ -3,6 +3,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Timers;
 
 namespace LE07_02_Kropf
 {
@@ -15,8 +16,6 @@ namespace LE07_02_Kropf
         {
             InitializeComponent();
         }
-        
-
         private void WindowMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -31,11 +30,10 @@ namespace LE07_02_Kropf
         private void BtnCloseClick(object sender, RoutedEventArgs e)
         {
             WindowGoodbye windowGoodbye = new WindowGoodbye();
-            windowGoodbye.Show();
-            Environment.Exit(0);
-
+            Hide();
+            windowGoodbye.ShowDialog();
+            Close();
         }
-        
         private void RadioBtnCheckedChangeImageToThumbsUp(object sender, RoutedEventArgs e)
         {
             if(radioBtn3.IsChecked == true) image1.Source = new BitmapImage(new Uri("Pictures/thumbUp.png", UriKind.Relative));
@@ -50,7 +48,6 @@ namespace LE07_02_Kropf
             else if(radioBtn7.IsChecked == true || radioBtn9.IsChecked == true) image3.Source = new BitmapImage(new Uri("Pictures/thumbDown.png", UriKind.Relative));
             else image4.Source = new BitmapImage(new Uri("Pictures/thumbDown.png", UriKind.Relative));
         }
-
         private void ReloadClick(object sender, RoutedEventArgs e)
         {
             image1.Source = new BitmapImage(new Uri("Pictures/space.png", UriKind.Relative));
